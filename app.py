@@ -3,6 +3,7 @@ import datetime
 from flask_compress import Compress
 from flask_sslify import SSLify
 import requests
+import time
 
 
 
@@ -26,6 +27,11 @@ def date():
     dateTime =currentDT.strftime("%Y-%m-%d %H:%M:%S")
     url = 'https://programming-quotes-api.herokuapp.com/quotes/random'
     r = requests.get(url).json()
+    
+        # time.sleep(20)
+        
+
+    
     
     return render_template('/index.html',date=dateTime,quote=r)
 
