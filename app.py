@@ -18,11 +18,12 @@ Compress(app)
 
 
 
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def date():
     currentDT = datetime.datetime.now()
     dateTime =currentDT.strftime("%Y-%m-%d %H:%M:%S")
-    return render_template('/date.html',date=dateTime)
+    print(dateTime)
+    return render_template('/index.html',date=dateTime)
 
 if __name__ == "__main__":
     # Development
