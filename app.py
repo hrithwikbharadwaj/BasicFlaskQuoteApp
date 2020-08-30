@@ -2,6 +2,8 @@ from flask import Flask, render_template, url_for, redirect, request, session, f
 import datetime
 from flask_compress import Compress
 from flask_sslify import SSLify
+import requests
+
 
 
 #flask config
@@ -22,8 +24,10 @@ Compress(app)
 def date():
     currentDT = datetime.datetime.now()
     dateTime =currentDT.strftime("%Y-%m-%d %H:%M:%S")
-    print(dateTime)
-    return render_template('/index.html',date=dateTime)
+    url = 'https://programming-quotes-api.herokuapp.com/quotes/random'
+    r = requests.get(url).json()
+    
+    return render_template('/index.html',date=dateTime,quote=r)
 
 if __name__ == "__main__":
     # Development
